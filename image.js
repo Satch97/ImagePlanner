@@ -1,3 +1,9 @@
+/*
+* File Name : image.js
+* Description : Control logic for image webpage by accessing
+*               the url input and add and delete button
+*/
+
 "use strict";
 
 let urlreg =
@@ -9,6 +15,10 @@ window.onload = function()
     $("delbut").onclick= delImage;
 };
 
+/*
+    Validates URL then adds it to planning area
+    if it is not there already
+ */
 function addImage() {
     let imgurl = $("imgurl").value;
 
@@ -32,6 +42,10 @@ function addImage() {
 
 }
 
+/*
+    Returns corresponding dom element
+    to passed url
+ */
 function getUrlElem(imgurl) {
     let imgs = $$(".addedimg");
     var i;
@@ -43,6 +57,10 @@ function getUrlElem(imgurl) {
     return null;
 }
 
+/*
+    On image load we can now put the
+    dom element in place
+ */
 function loadImage() {
 
     this.classList.add("addedimg");
@@ -65,6 +83,10 @@ function loadImage() {
 
 }
 
+/*
+    Validates URL, finds corresponding dom element
+    if it exists, delete it.
+ */
 function delImage() {
     let imgurl = $("imgurl").value;
 
@@ -86,10 +108,19 @@ function delImage() {
 
 }
 
+/*
+    update url text on click of image to its
+    corresponding url
+ */
 function updateUrl(){
     $("imgurl").value = this.src;
 }
 
+/*
+    updates error message,
+    hiding the element if there
+    is no error
+ */
 function updateError(errorMsg) {
     if (errorMsg == null) {
         $("errmsg").classList.remove("show");
