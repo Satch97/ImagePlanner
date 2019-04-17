@@ -32,7 +32,7 @@ function getUrlElem(imgurl) {
     var imgs = $$(".addedimg");
     for (var i = 0; i < imgs.length; i++) {
         if(imgs[i].src == imgurl) {
-            return this;
+            return imgs[i];
         }
     }
     return null;
@@ -59,5 +59,13 @@ function loadImage() {
 }
 
 function delImage() {
+    var imgurl = $("imgurl").value;
+    var elem = getUrlElem(imgurl);
+    if (elem == null)  {
+        // err message update and show
+        return;
+    } else {
+        elem.remove();
+    }
 
 }
