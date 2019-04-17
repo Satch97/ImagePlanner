@@ -13,5 +13,11 @@
     transform: scale(5);
     position: relative;
 }
-.zoom:hover {
+
+#hide {
+    display : block;
+}
+
+#show {
+    display : none;
 }

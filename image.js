@@ -92,11 +92,13 @@ function updateUrl(){
 
 function updateError(errorMsg) {
     if (errorMsg == null) {
-        $("errmsg").style.display == "block";
+        $("errmsg").classList.remove("show");
+        $("errmsg").classList.add("hide");
         return;
     }
 
     $("errmsg").innerText = "Error : " + errorMsg;
-    $("errmsg").style.display == "none";
+    $("errmsg").classList.remove("hide");
+    $("errmsg").classList.add("show");
 
 }
