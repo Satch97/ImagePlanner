@@ -15,12 +15,28 @@ function addImage() {
         return;
     }
 
+    // check if url is included already;
+
+    if (getUrlElem(imgurl) != null) {
+        // update and show err message
+        return;
+    }
+
     var newimg = new Image();
     newimg.src = imgurl;
     newimg.onload = loadImage;
 
 }
 
+function getUrlElem(imgurl) {
+    var imgs = $$(".addedimg");
+    for (var i = 0; i < imgs.length; i++) {
+        if(imgs[i].src == imgurl) {
+            return this;
+        }
+    }
+    return null;
+}
 
 function loadImage() {
 
