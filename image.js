@@ -11,14 +11,15 @@ function addImage() {
 
     // Adpted and Improved from reference : https://regexr.com/3g1v7
     if(!imgurl.match(urlreg)) {
-        alert("Bad URL");
+        updateError("URL not supported");
         return;
     }
 
     // check if url is included already;
 
     if (getUrlElem(imgurl) != null) {
-        // update and show err message
+        updateError("URL already loaded");
+
         return;
     }
 
@@ -55,22 +56,43 @@ function loadImage() {
     }
 
     $("planarea").appendChild(this);
-    // hide err message if any
+    updateError(null);
+
 
 }
 
 function delImage() {
     var imgurl = $("imgurl").value;
+
+    if(!imgurl.match(urlreg)) {
+        updateError("URL not supported");
+
+        return;
+    }
+
     var elem = getUrlElem(imgurl);
     if (elem == null)  {
-        // err message update and show
+        updateError("Image not found");
+
         return;
-    } else {
-        elem.remove();
     }
+
+    elem.remove();
+    updateError(null);
 
 }
 
 function updateUrl(){
     $("imgurl").value = this.src;
+}
+
+function updateError(errorMsg) {
+    if (errorMsg == null) {
+        $('errmsg').style.display == "block";
+        return;
+    }
+
+    $('errmsg').innerText = "Error : " + errorMsg;
+    $('errmsg').style.display == "none";
+
 }
