@@ -41,16 +41,17 @@ function getUrlElem(imgurl) {
 function loadImage() {
 
     this.classList.add("addedimg");
+    this.onclick = updateUrl;
     if(this.height > 100) {
         var hscale = this.height/100;
         this.width = this.width/hscale;
-        this.height = this.width/hscale;
+        this.height = this.height/hscale;
     }
 
     if(this.width > 100) {
         var wscale = this.width/100;
         this.width = this.width/wscale;
-        this.height = this.width/wscale;
+        this.height = this.height/wscale;
     }
 
     $("planarea").appendChild(this);
@@ -68,4 +69,8 @@ function delImage() {
         elem.remove();
     }
 
+}
+
+function updateUrl(){
+    $("imgurl").value = this.src;
 }
